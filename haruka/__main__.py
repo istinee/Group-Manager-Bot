@@ -20,26 +20,21 @@ from haruka.modules.helper_funcs.misc import paginate_modules
 from haruka.modules.translations.strings import tld, tld_help 
 from haruka.modules.connection import connected
 
-PM_START = """Hello {}, my name is {}!
+PM_START = """
+Hey {} 👋,
 
-You know how hard it is sometimes to manage group so here is the solution for you
+I am {} 
 
-I'm group manager bot and Anti-spam for RR Players🃏
+● If you have any questions about how to use me please Hit /help
 
-Activate Anti-spam protection in your BM by this command : 
-/antispam on 
+● I am a group manager bot maintained by  
+[this person](tg://user?id={}).
 
-Made from the source code of [Aditya 🇮🇳](t.me/xditya)
+● For more commands: /help
 
-Special thanks to [this person](t.me/denver02) for helping me.
+● Want to add me to your Group? 
+👉 [Click here](http://telegram.me/SK4S_GroupHelpBot?startgroup=botstart)
 
-Deploy a bot like me [now](www.github.com/xditya/GroupManager)
-
-Watch [video tutorial](https://www.youtube.com/watch?v=gXXFpTAk6Vo&feature=youtu.be) on deploying me.
-
-Click /help or Help button below to find out more about how to use me to my full potential.
-
- Add me to a group by clicking [here](http://t.me/tg_GroupManagerBot?startgroup=true).
 """
 
 
@@ -108,7 +103,7 @@ def send_help(chat_id, text, keyboard=None):
 @run_async
 def test(bot: Bot, update: Update):
     #pprint(eval(str(update)))
-    #update.effective_message.reply_text("Hola tester! _I_ *have* `markdown`", parse_mode=ParseMode.MARKDOWN)
+    #update.effective_message.reply_text("Hello tester! _I_ *have* `markdown`", parse_mode=ParseMode.MARKDOWN)
     update.effective_message.reply_text("This person edited a message")
     print(update.effective_message)
 
@@ -156,9 +151,11 @@ def send_start(bot, update):
     chat = update.effective_chat  # type: Optional[Chat]
     first_name = update.effective_user.first_name 
     text = PM_START
-
-    keyboard = [[InlineKeyboardButton(text="🇮🇳 Language", callback_data="set_lang_")]]
+    
+    keyboard = [[InlineKeyboardButton(text="Add me to Group", url="http://telegram.me/SK4S_GroupHelpBot?startgroup=botstart")]]
+    keyboard += [[InlineKeyboardButton(text="🇮🇳 Language", callback_data="set_lang_")]]
     keyboard += [[InlineKeyboardButton(text="🛠 Reporting", callback_data="cntrl_panel_M"), 
+        InlineKeyboardButton(text="Support", url="http://telegram.me/SK4S_BotSupport"),
         InlineKeyboardButton(text="❔ Help", callback_data="help_back")]]
 
     update.effective_message.reply_text(PM_START.format(escape_markdown(first_name), bot.first_name), reply_markup=InlineKeyboardMarkup(keyboard), disable_web_page_preview=True, parse_mode=ParseMode.MARKDOWN)
